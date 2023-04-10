@@ -6,18 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Love Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
 </head>
 <body>
-    <h1>Love Calculator</h1>
+<div class="wrapper">
+    <header>Love Calculator</header>
     <form id="loveCalculatorForm">
         <label for="name1">Your Name:</label>
-        <input type="text" id="name1" required>
-        <label for="name2">Partner's Name:</label>
-        <input type="text" id="name2" required>
-        <button type="submit">Calculate</button>
-    </form>
-    <div id="result"></div>
+        <div class="field email">
+        <div class="input-area">
+            <input type="text" placeholder="Enter your name" id="name1" required>
+            <i class="icon fas fa-male"></i>
 
+        </div>
+        </div>
+
+        <label for="name2">Partner's Name:</label>
+        <div class="field password">
+        <div class="input-area">
+        <input type="text" placeholder="Enter your partner/crush name" id="name2" required>
+        <i class="icon fas fa-heart"></i>   
+    </div>
+        </div>
+        <input type="submit" value="Calculate">
+    </form>
+
+      <div id="result"></div>
+
+</div>
+
+    <script src="script.js"></script>
+
+
+<!--    
+    <div id="result"></div>
+</div>
+        <button type="submit">Calculate</button>
+
+-->
 <!--
     <div id="quote"></div>
 
