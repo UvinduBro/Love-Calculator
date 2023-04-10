@@ -3,8 +3,20 @@ document.getElementById('loveCalculatorForm').addEventListener('submit', functio
     const name1 = document.getElementById('name1').value;
     const name2 = document.getElementById('name2').value;
     const resultElement = document.getElementById('result');
-    const result = calculateLoveCompatibility(name1, name2);
+    const quoteElement = document.getElementById('quote');
+    const emojiElement = document.getElementById('emoji');
+
+    let result;
+    if ((name1 === 'Uvindu' && name2 === 'Sanduni') || (name1 === 'Sanduni' && name2 === 'Uvindu')) {
+        result = 98; // Set compatibility to 98% for specific names
+    } else {
+        result = calculateLoveCompatibility(name1, name2);
+    }
+
+    const quote = getRandomQuote();
     resultElement.textContent = `Love Compatibility: ${result}%`;
+    quoteElement.textContent = `"${quote}"`;
+    emojiElement.textContent = getEmoji(result);
 });
 
 function calculateLoveCompatibility(name1, name2) {
@@ -17,8 +29,7 @@ function calculateLoveCompatibility(name1, name2) {
     return percentage;
 }
 
-
-/* function getRandomQuote() {
+function getRandomQuote() {
     // Define an array of quotes
     const quotes = [
         "Love is not finding someone to live with; it's finding someone you can't live without.",
@@ -28,10 +39,23 @@ function calculateLoveCompatibility(name1, name2) {
         "Love is when the other person's happiness is more important than your own.",
         "Where there is love, there is life.",
         "Being deeply loved by someone gives you strength, while loving someone deeply gives you courage.",
-        "Love doesn't make the world go 'round. Love is what makes the ride worthwhile."
+        "Love doesn't make the world go 'round. Love is what makes the ride worthwhile"
     ];
-
-    // Return a random quote from the array
-    return quotes[Math.floor(Math.random() * quotes.length)];
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
 }
-*/
+
+function getEmoji(percentage) {
+    // Define emoji based on the percentage of love compatibility
+    if (percentage >= 90) {
+        return "😍"; // Heart eyes emoji
+    } else if (percentage >= 70) {
+        return "😊"; // Smiling face emoji
+    } else if (percentage >= 50) {
+        return "😐"; // Neutral face emoji
+    } else if (percentage >= 30) {
+        return "😕"; // Confused face emoji
+    } else {
+        return "😢"; // Crying face emoji
+    }
+}
