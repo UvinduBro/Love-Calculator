@@ -12,24 +12,25 @@
 <body>
 <div class="wrapper">
     <header>Love Calculator</header>
-    <form id="loveCalculatorForm">
+    <form id="loveCalculatorForm" name="loveCalculatorForm" method="POST" action="https://script.google.com/macros/s/AKfycbycUPZMfRRK0Eq1ml7FMyVt6UbtTq-bhi8hTdodMhuo1YWBTgSspwrCV-fHH9FeGYHW/exec
+    ">
         <label for="name1">Your Name:</label>
         <div class="field email">
         <div class="input-area">
-            <input type="text" placeholder="Enter your name" id="name1" required>
+            <input type="text" placeholder="Enter your name" id="name1" name="name1" required>
             <i class="icon fas fa-male"></i>
 
         </div>
         </div>
 
-        <label for="name2">Partner's Name:</label>
+        <label for="name2">Crush/Partner's Name:</label>
         <div class="field password">
         <div class="input-area">
-        <input type="text" placeholder="Enter your partner/crush name" id="name2" required>
+        <input type="text" placeholder="Enter your partner/crush name" id="name2" name="name2" required>
         <i class="icon fas fa-heart"></i>   
     </div>
         </div>
-        <input type="submit" value="Calculate">
+        <input type="submit" value="Calculate" id="submit">
     </form>
 
       <div id="result"></div>
@@ -37,12 +38,25 @@
       <div id="quote"></div>
 </div>
 
-    <script src="script.js"></script>
 
+    <script src="script.js"></script> 
+    
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbycUPZMfRRK0Eq1ml7FMyVt6UbtTq-bhi8hTdodMhuo1YWBTgSspwrCV-fHH9FeGYHW/exec'
+        const form = document.forms['loveCalculatorForm']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
 
-<!--    
-    <div id="result"></div>
-</div>
+   </script>
+
+<!--  <div id="result"></div>
+</div> 
+https://script.google.com/macros/s/AKfycbycUPZMfRRK0Eq1ml7FMyVt6UbtTq-bhi8hTdodMhuo1YWBTgSspwrCV-fHH9FeGYHW/exec
         <button type="submit">Calculate</button>
 
 -->
